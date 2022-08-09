@@ -1,8 +1,10 @@
 import React from 'react';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import './form.scss';
-
-function Form (props) {
+import Swal from "sweetalert2"; 
+function FORM (props) {
   console.log(props)
   const handleSubmit= e=> {
     e.preventDefault();
@@ -11,27 +13,33 @@ function Form (props) {
       url: 'https://pokeapi.co/api/v2/pokemon',
     };
     props.handleApiCall(formData);
+
   }
 
 
     return (
       <>
-      {/* onSubmit={this.handleSubmit} */}
-        <form  onSubmit={handleSubmit} >
-          <label >
-            <span>URL: </span>
-            <input name='url' type='text' />
-            <button type="submit">GO!</button>
-          </label>
-          <label className="methods">
-            <span id="get">GET</span>
-            <span id="post">POST</span>
-            <span id="put">PUT</span>
-            <span id="delete">DELETE</span>
-          </label>
-        </form>
+      <Form onSubmit={handleSubmit}>
+      <Form.Group className="mb-3">
+        <Form.Label>Url</Form.Label>
+        <Form.Control placeholder="Enter Url"  />
+      </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>Select Method</Form.Label>
+        <Form.Select >
+          <option>GET</option>
+          <option>POST</option>
+          <option>PUT</option>
+          <option>DELETE</option>
+        </Form.Select>
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+      </Form>
+
       </>
     );
 }
 
-export default Form;
+export default FORM;

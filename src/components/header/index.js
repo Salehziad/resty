@@ -1,9 +1,17 @@
-import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Nav from 'react-bootstrap/Nav';
+import './header.scss'
 
-export default function Header()  {
-    return (
-      <header>
-        <h1>RESTy</h1>
-      </header>
-    );
+function Header() {
+  return (
+    <>
+      <Nav className="justify-content-center" activeKey="/home">
+        <Nav.Item>
+          <Nav.Link className='nav-title' href="/home">RESTy</Nav.Link>
+        </Nav.Item>
+      </Nav>
+    </>
+  );
 }
+
+export default Header;

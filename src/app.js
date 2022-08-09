@@ -8,6 +8,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import Form from './components/form';
 import Results from './components/results';
+import Swal from "sweetalert2"; 
 
 function App() {
     const [user,setUser]=useState({
@@ -20,6 +21,17 @@ function App() {
         data: null,
         requestParams: {}
     };
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
 
 function callApi (requestParams) {
     // mock output
@@ -39,7 +51,10 @@ function callApi (requestParams) {
     if (requestParams) {
         // setUser.data="ffff"
         setUser({...user,data:data,requestParams:requestParams});
-        console.log('after',user);
+        Toast.fire({
+            icon: 'success',
+            title: 'Your Url request is Succesfully'
+          })
     }
 }
 console.log('ddd',user);
