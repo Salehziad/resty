@@ -1,0 +1,46 @@
+form {
+  display: flex;
+  width: 200px;
+  margin-left: 30px;
+}
+form .first {
+  margin-left: 25px;
+  flex: 50%;
+  margin-top: 30px;
+}
+form .first input {
+  width: 400px;
+}
+form .second {
+  margin-left: 25px;
+  flex: 50%;
+  margin-top: 30px;
+}
+form .second input {
+  width: 400px;
+}
+form .select {
+  margin-top: 30px;
+}
+form .select select {
+  margin-left: 25px;
+  width: auto;
+}
+form label {
+  display: flex;
+  margin: 1rem 0;
+}
+form label.methods span {
+  cursor: pointer;
+  margin-right: 1rem;
+  padding: 0.25rem 0.5rem;
+  background: #ccc;
+}
+form label.methods span:hover, form label.methods span.active {
+  background: #fff;
+}
+form .btn {
+  margin-left: 10px;
+  height: 38px;
+  margin-top: 30px;
+}/*# sourceMappingURL=form.css.map */

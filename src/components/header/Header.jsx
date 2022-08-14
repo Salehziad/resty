@@ -1,8 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav from 'react-bootstrap/Nav';
-import './header.scss'
+import './header.css'
 
-function Header() {
+function Header(props) {
   return (
     <>
       <Nav className="justify-content-center" activeKey="/home">
