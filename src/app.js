@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './app.css';
 import Footer from './components/footer';
 import Form from './components/form';
-import Results from './components/results';
+import Results from './components/results/index';
 import Swal from "sweetalert2"; 
 import Header from './components/header/Header';
 
@@ -45,7 +45,7 @@ function callApi (requestParams) {
             {/* <div>URL : {user.requestParams.url}</div> */}
             <Form handleApiCall={callApi} sendToParent={setData}/>
             {/* {console.log("aaa",x)} */}
-            <Results data={data1}/>
+            <Results data={data1} name={'sss'} />
             <Footer/>
         </React.Fragment>
     );

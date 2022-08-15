@@ -31,7 +31,7 @@ function FORM(props) {
         }
         // let url = 'https://reqres.in/api/posts';
         let url = e.target[0].value;
-        let response = await fetch('https://reqres.in/api/posts', requestOptions);
+        let response = await fetch(url, requestOptions);
         let x = await response.json();
         props.sendToParent(x)
         console.log(props)
