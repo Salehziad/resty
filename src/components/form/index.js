@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -16,33 +17,45 @@ function FORM(props) {
         };
         console.log(e)
         props.handleApiCall(formData);
-        let requestOptions={};
-        e.target[1].value==='GET'?requestOptions= {
-            method: e.target[1].value,
-            headers:  {
-                    "access-control-allow-origin": "*",
-                    "Content-type": "application/json; charset=UTF-8"
-                }
-        }
-        :requestOptions={
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title: e.target[1].value })
-        }
+        // let requestOptions={};
+        // e.target[1].value==='GET'?requestOptions= {
+        //     method: e.target[1].value,
+        //     headers:  {
+        //             "access-control-allow-origin": "*",
+        //             "Content-type": "application/json; charset=UTF-8"
+        //         }
+        // }
+        // :requestOptions={
+        //     method: 'POST',
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify({ title: e.target[1].value })
+        // }
         // let url = 'https://reqres.in/api/posts';
         let url = e.target[0].value;
-        let response = await fetch(url, requestOptions);
-        let x = await response.json();
-        props.sendToParent(x)
-        console.log(props)
-        e.target[0].value = null;
-    }
+        // let response = await fetch(url, requestOptions);
+        // let x = await response.json();
+        axios.get(url)
+      .then(res => {
+        const persons = res.data;
+        console.log(persons);
+        // setData(persons)
+        props.sendToParent(persons)
+        // console.log(persons);
+      }).catch((err)=>{
+        console.log(err);
+      });
+
+      e.target[0].value = null;
+  }
+        // console.log(props)
+    
     const handleObtions = (e) => {
         setObtions(e.target.value)
         e.target.value === 'POST' || e.target.value === 'PUT'
             ? setShowBody(true)
             : setShowBody(false);
     }
+
     return (
         <>
             <Form onSubmit={handleSubmit}>
