@@ -10,44 +10,23 @@ function FORM(props) {
         let[obtions,setObtions]=useState('GET')
     const handleSubmit = async(e) => {
         e.preventDefault();
-        //CALL THE METHOD
         const formData = {
             method: obtions,
             url: e.target[0].value
         };
-        console.log(e)
         props.handleApiCall(formData);
-        // let requestOptions={};
-        // e.target[1].value==='GET'?requestOptions= {
-        //     method: e.target[1].value,
-        //     headers:  {
-        //             "access-control-allow-origin": "*",
-        //             "Content-type": "application/json; charset=UTF-8"
-        //         }
-        // }
-        // :requestOptions={
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify({ title: e.target[1].value })
-        // }
         // let url = 'https://reqres.in/api/posts';
         let url = e.target[0].value;
-        // let response = await fetch(url, requestOptions);
-        // let x = await response.json();
         axios.get(url)
       .then(res => {
         const persons = res.data;
-        console.log(persons);
-        // setData(persons)
         props.sendToParent(persons)
-        // console.log(persons);
       }).catch((err)=>{
         console.log(err);
       });
 
       e.target[0].value = null;
   }
-        // console.log(props)
     
     const handleObtions = (e) => {
         setObtions(e.target.value)
